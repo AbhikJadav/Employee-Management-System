@@ -40,6 +40,7 @@ const Login = () => {
         else if(loginFormData.password==="")
         {
             alert("Please enter password");
+
         }
         else {
             dispatch(Login_Intialize(loginFormData.email,loginFormData.password));
