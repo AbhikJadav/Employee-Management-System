@@ -1,4 +1,4 @@
-import {act} from "@testing-library/react";
+
 
 const defaultState={
     payload:{
@@ -32,14 +32,14 @@ const auth_reducer = (state=defaultState, action) => {
                     ...state.payload,
                     loading: action.payload.loading,
                     // login: action.payload.login,
-                    userid:action.payload.userid,
+                    userid:action.payload.uid,
                     redirect: "/",
                 }
             }
         case "Login_Success":
 
             localStorage.setItem("auth",action.payload.userid);
-
+            // console.log("email",action.payload.email);
             return{
                 ...state,
                 payload: {
@@ -47,7 +47,8 @@ const auth_reducer = (state=defaultState, action) => {
                     loading: action.payload.loading,
                     // login: action.payload.login,
                     userid:action.payload.userid,
-                    redirect: "/Layout",
+                    // table:action.payload.table,
+                    // redirect: "/",
                 }
             }
         case "Signout_Success":
@@ -97,6 +98,7 @@ const auth_reducer = (state=defaultState, action) => {
                     redirect:action.payload.path,
                 }
             }
+
         default:
             return state;
     }

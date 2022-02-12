@@ -7,7 +7,7 @@ import Forgot_Password from "./Admin_Site/Component/Authentication/Forgot_Passwo
 import {Routes,Route} from "react-router";
 import {useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
-
+import Home from "./Employee_Site/Component/Home";
 const App = () => {
     const [islogin,setIsLogin]=useState(null);
     useEffect(()=>{
@@ -37,6 +37,7 @@ const App = () => {
                     {/*<Route path="/Signup" element={<Signup/>}></Route>*/}
                     <Route path="/Signup" element={<Signup/>}></Route>
                     <Route path="/Forgot_Password" element={<Forgot_Password/>}></Route>
+                            <Route path="/Home" element={<Home/>}></Route>
 
                     {/*<Route path="/Layout" element={<Layout/>}></Route>*/}
                     {islogin == true ? <Route path="/Layout" element={<Layout/>}></Route> :"" }
@@ -49,6 +50,9 @@ const App = () => {
             {/*        {       islogin == true ? <Route path="/Layout" element={<Layout/>}></Route> :<Route path="/" element={<Login/>}></Route> }*/}
             {/*    </Routes>*/}
             {/*}*/}
+            {/*    <Routes>*/}
+            {/*        <Route path="/Home" element={<Home/>}></Route>*/}
+            {/*    </Routes>*/}
 
 
 

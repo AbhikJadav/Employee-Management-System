@@ -5,6 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import Login_Intialize from "../../../redux/Action/login_action";
 import {Redirect} from "../../../redux/Action/login_action";
 import {Link, useNavigate} from "react-router-dom";
+
 const Login = () => {
 
     const[loginFormData,setLoginFormData]=useState({
@@ -25,22 +26,21 @@ const Login = () => {
     const redirect = selector.payload.redirect;
     const navigate=useNavigate();
 
-    useEffect(()=>{
-        if(redirect=="/")
-        {
-            navigate("/Forgot_Password");
-        }
-    },[redirect,navigate]);
 
-    const logIn=()=>{
-        if (loginFormData.email==="")
+     const logIn=()=>{
+        // if(loginFormData.email===""&& loginFormData.password==="")
+        // {
+        //
+        //     document.getElementById("err").innerHTML="Please fill all details";
+        // }
+        if (loginFormData.email=="")
         {
-            alert("Please enter email");
+            document.getElementById("errEmail").innerHTML="Please Enter Valid Email";
+            // alert("Please enter email");
         }
         else if(loginFormData.password==="")
         {
-            alert("Please enter password");
-
+            document.getElementById("errPassword").innerHTML="Please Enter Password";
         }
         else {
             dispatch(Login_Intialize(loginFormData.email,loginFormData.password));
@@ -71,7 +71,8 @@ const Login = () => {
                                     </header>
 
                         <div className="inputs">
-                            <input type="Email" name="email" id="email" placeholder="Email" onChange={inputEvent} value={loginFormData.email} required/>
+                            <input type="email" name="email" id="email" placeholder="Email" onChange={inputEvent} value={loginFormData.email} required/>
+
                                 <input type="password" name="password" id="password" placeholder="Password" onChange={inputEvent} value={loginFormData.password} required/>
 
                                     <p className="light">
@@ -83,6 +84,10 @@ const Login = () => {
                     </div>
 
                     <footer>
+
+                        <span id="err" style={{color:"red"}}></span>
+                        <span id="errEmail" style={{color:"red"}}></span>
+                        <span id="errPassword" style={{color:"red"}}></span>
                         <button onClick={logIn} className="button">Login Here</button>
                         {/*<p>Don't have an account?<Link to="/Signup" className="Link">Sign Up</Link></p>*/}
                         <p>Don't have an account?<span onClick={Signup_Link} className="Link">Sign Up</span></p>
