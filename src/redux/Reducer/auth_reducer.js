@@ -48,7 +48,24 @@ const auth_reducer = (state=defaultState, action) => {
                     // login: action.payload.login,
                     userid:action.payload.userid,
                     // table:action.payload.table,
-                    // redirect: "/",
+                    // redirect: "/Layout",
+                }
+            }
+        case "Admin_Login_Success":
+            // localStorage.setItem("auth",action.payload.userid);
+            return {
+                ...state,
+                payload: {
+                    ...state.payload,
+                    redirect: "/Layout",
+                }
+            }
+        case "Employee_Login_Success":
+            return{
+                ...state,
+                payload: {
+                    ...state.payload,
+                    redirect:"/Home",
                 }
             }
         case "Signout_Success":
@@ -98,6 +115,7 @@ const auth_reducer = (state=defaultState, action) => {
                     redirect:action.payload.path,
                 }
             }
+
 
         default:
             return state;

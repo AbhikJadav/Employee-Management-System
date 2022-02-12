@@ -1,5 +1,6 @@
 import axios from "axios";
-import {tab} from "@testing-library/user-event/dist/tab";
+import Admin from "../../Admin_Site/Component/Admin";
+
 const Login_Started=()=>{
     return{
         type:"Login_Started",
@@ -16,6 +17,24 @@ const Login_Success=(userid)=>{
         }
     }
 }
+const Admin_Login_Success=()=>{
+    return {
+        type:"Admin_Login_Success",
+        payload:{
+            loading:false,
+
+        }
+    }
+}
+const Employee_Login_Success=()=>{
+    return {
+        type:"Employee_Login_Success",
+        payload:{
+            loading:false,
+        }
+    }
+}
+
 
 const Login_Failure=(error)=>{
     return{
@@ -53,22 +72,23 @@ const Login_Intialize=(email,password)=>{
                         response.data[key].id
                     )
                 }
-                console.log("table:",table);
-                console.log(user.data.localId);
-                table.find((element)=>{
-                    if(element==user.data.localId)
-                    {
-                        dispatch(Redirect("/Layout"));
-                    }
-                    else
-                    {
-                        dispatch(Redirect("/Home"));
-                    }
-                });
+                // console.log("table:",table);
+                // console.log(user.data.localId);
+                let findData=table.find((element)=>element===user.data.localId);
+                // console.log("data:",findData);
+                if(findData!==undefined)
+                {
+                    dispatch(Admin_Login_Success());
+                }
+                else
+                {
+                    dispatch(Employee_Login_Success());
+                }
                 dispatch(Login_Success(user.data.localId));
+
             });
 
-            // dispatch(Login_Success(email,password));
+
         }
         catch(e)
         {
