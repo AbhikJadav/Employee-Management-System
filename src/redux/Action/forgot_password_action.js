@@ -33,7 +33,7 @@ const Forgot_Password_Initialize=(email)=>{
         }
         catch(e)
         {
-            Forgot_Password_Failure(e.message);
+            dispatch(Forgot_Password_Failure(e.response.data.error.message));
         }
     }
 

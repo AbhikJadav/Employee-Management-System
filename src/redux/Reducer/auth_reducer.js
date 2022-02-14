@@ -36,40 +36,45 @@ const auth_reducer = (state=defaultState, action) => {
                     redirect: "/",
                 }
             }
-        case "Login_Success":
-
-            localStorage.setItem("auth",action.payload.userid);
-            // console.log("email",action.payload.email);
-            return{
-                ...state,
-                payload: {
-                    ...state.payload,
-                    loading: action.payload.loading,
-                    // login: action.payload.login,
-                    userid:action.payload.userid,
-                    // table:action.payload.table,
-                    // redirect: "/Layout",
-                }
-            }
+        // case "Login_Success":
+        //
+        //     localStorage.setItem("auth",action.payload.userid);
+        //     // console.log("email",action.payload.email);
+        //     return{
+        //         ...state,
+        //         payload: {
+        //             ...state.payload,
+        //             loading: action.payload.loading,
+        //             // login: action.payload.login,
+        //             userid:action.payload.userid,
+        //             // table:action.payload.table,
+        //             // redirect: "/Layout",
+        //         }
+        //     }
         case "Admin_Login_Success":
-            // localStorage.setItem("auth",action.payload.userid);
+            localStorage.setItem("Admin",action.payload.userid);
+
             return {
                 ...state,
                 payload: {
                     ...state.payload,
+                    userid:action.payload.userid,
                     redirect: "/Layout",
                 }
             }
         case "Employee_Login_Success":
+            localStorage.setItem("Employee",action.payload.userid);
             return{
                 ...state,
                 payload: {
                     ...state.payload,
+                    userid:action.payload.userid,
                     redirect:"/Home",
                 }
             }
         case "Signout_Success":
-            localStorage.removeItem("auth");
+            localStorage.removeItem("Admin");
+            localStorage.removeItem("Employee");
 
             return{
                 ...state,
@@ -81,6 +86,19 @@ const auth_reducer = (state=defaultState, action) => {
                     redirect: "/",
                 }
             }
+        // case "Employee_Signout_Success":
+        //     localStorage.removeItem("Employee");
+        //
+        //     return{
+        //         ...state,
+        //         payload: {
+        //             ...state.payload,
+        //             loading: action.payload.loading,
+        //             // login: action.payload.login,
+        //             userid:action.payload.userid,
+        //             redirect: "/",
+        //         }
+        //     }
         case "Forgot_Password_Success":
             return{
                 ...state,

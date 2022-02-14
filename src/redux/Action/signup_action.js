@@ -32,8 +32,19 @@ const Signup_Intialize=(email,password,isAdmin)=>{
         dispatch(Signup_Started())
         try
         {
-            await axios.post(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDlxv7xQim0OVrcuZ3t2OFEeUqcxXm_go0`,data).then(async(user)=>{
-                let uid={id:user.data.localId};
+            // await axios.post(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDlxv7xQim0OVrcuZ3t2OFEeUqcxXm_go0`,data).then(async(user)=>{
+            //     let uid={id:user.data.localId};
+            //     if (isAdmin===true)
+            //         {
+            //             await axios.post(`https://employeesystem-5ca76-default-rtdb.firebaseio.com/admin.json`,uid);
+            //            // const response=await axios.get(`https://employeesystem-5ca76-default-rtdb.firebaseio.com/admin.json`);
+            //            //  console.log("data",response);
+            //         }
+            //      dispatch(Signup_Success(email,password));
+            // });
+
+            const user=await axios.post(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDlxv7xQim0OVrcuZ3t2OFEeUqcxXm_go0`,data);
+            let uid={id:user.data.localId};
                 if (isAdmin===true)
                     {
                         await axios.post(`https://employeesystem-5ca76-default-rtdb.firebaseio.com/admin.json`,uid);
@@ -41,31 +52,11 @@ const Signup_Intialize=(email,password,isAdmin)=>{
                        //  console.log("data",response);
                     }
                  dispatch(Signup_Success(email,password));
-            });
-            // try{
-            //     await axios.post(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDlxv7xQim0OVrcuZ3t2OFEeUqcxXm_go0`,data)
-            // }
-            // catch (e) {
-            //
-            // }
-            // await axios.post(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDlxv7xQim0OVrcuZ3t2OFEeUqcxXm_go0`,data).then(async(user)=>{
-            //     let uid={id:user.data.localId};
-            //
-            //     if (isAdmin===true)
-            //         {
-            //             await axios.post(`https://employeesystem-5ca76-default-rtdb.firebaseio.com/admin.json`,uid);
-            //
-            //         }
-            //      dispatch(Signup_Success(email,password));
-            // });
-
-
-
 
         }
         catch(e)
         {
-            dispatch(Signup_Failure(e.message));
+            dispatch(Signup_Failure(e.response.data.error.message));
         }
 
     }

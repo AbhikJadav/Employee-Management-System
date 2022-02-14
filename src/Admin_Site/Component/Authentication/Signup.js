@@ -57,7 +57,7 @@ const Signup = () => {
                     </div>
 
                     <footer>
-
+                        <span id="err" style={{color:"red",fontWeight:"bold"}}>{selector.payload.error}</span>
                         <button onClick={signIn} className="button">Signup Here</button>
                         {/*<p>Go To! <Link to="/" className="Link">Login</Link></p>*/}
                         <p>Go To! <span onClick={Login_Link} className="Link">Login</span></p>

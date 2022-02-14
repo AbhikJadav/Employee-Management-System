@@ -28,24 +28,12 @@ const Login = () => {
 
 
      const logIn=()=>{
-        // if(loginFormData.email===""&& loginFormData.password==="")
-        // {
-        //
-        //     document.getElementById("err").innerHTML="Please fill all details";
-        // }
-        if (loginFormData.email=="")
-        {
-            document.getElementById("errEmail").innerHTML="Please Enter Valid Email";
-            // alert("Please enter email");
-        }
-        else if(loginFormData.password==="")
-        {
-            document.getElementById("errPassword").innerHTML="Please Enter Password";
-        }
-        else {
+
+
             dispatch(Login_Intialize(loginFormData.email,loginFormData.password));
+            // console.log(loginFormData.password.length);
             // console.log("sel:", selector);
-        }
+
 
         setLoginFormData({email: "",password: ""})
 
@@ -85,9 +73,9 @@ const Login = () => {
 
                     <footer>
 
-                        <span id="err" style={{color:"red"}}></span>
-                        <span id="errEmail" style={{color:"red"}}></span>
-                        <span id="errPassword" style={{color:"red"}}></span>
+                        <span id="err" style={{color:"red",fontWeight:"bold"}}>{selector.payload.error}</span>
+                        {/*<span id="errEmail" style={{color:"red"}}></span>*/}
+                        {/*<span id="errPassword" style={{color:"red"}}></span>*/}
                         <button onClick={logIn} className="button">Login Here</button>
                         {/*<p>Don't have an account?<Link to="/Signup" className="Link">Sign Up</Link></p>*/}
                         <p>Don't have an account?<span onClick={Signup_Link} className="Link">Sign Up</span></p>

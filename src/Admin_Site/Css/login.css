@@ -131,6 +131,7 @@ footer {
     right: 0;
     padding: 2em;
     text-align: center;
+    margin: -5px;
 }
 
 .button {
@@ -138,6 +139,7 @@ footer {
     padding: 13px 15px;
     border-radius: 200px;
     border: none;
+
     background: #257aa6;
     font-family: 'Poppins', sans-serif;
     outline: none;
@@ -146,7 +148,7 @@ footer {
 .button:hover
 {
     background-color: #2a2a72;
-    background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%);
+    /*background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%);*/
 }
 
 .Link:hover
