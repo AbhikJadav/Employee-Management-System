@@ -13,8 +13,10 @@
     /*height: 100vh;*/
 }
 img {
-    /*filter: grayscale(50%);*/
-    /*background: white;*/
+    /*filter: grayscale(100%);*/
+    background: white;
+    /*background:#253047;*/
+    padding: 8px;
 }
 .main
 {
@@ -82,6 +84,40 @@ img {
     color: rgb(134,141,151);
     font-weight: 300px;
     transition: 0.3s ease;
+}
+#menu .items li li{
+    font-size: 15px;
+    color: #e6e6e6;
+    padding-left: 25px;
+    /*margin-left: 65px;*/
+    /*display: none;*/
+}
+#menu .items li li:hover{
+
+    color: black;
+    background: #768e78;
+    padding-left: 25px;
+    /*margin-left: 65px;*/
+    /*display: none;*/
+}
+#menu .items li li:hover i,
+#menu .items li li:hover a{
+    color:black;
+}
+#menu .items li span
+{
+    position: absolute;
+    top: 275px;
+    right: 20px;
+    transform: translateY(-50%);
+    font-size: 22px;
+    color:white ;
+    text-decoration: none;
+    transition: transform 0.4s;
+}
+#menu .items li span:hover
+{
+    transform: translateY(-50%) rotate(-180deg);
 }
 
 #menu_active
@@ -197,8 +233,8 @@ img {
 }
 #interface .navigation .profile img
 {
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 50px;
     object-fit: cover;
     border-radius: 50%;
 }
@@ -349,6 +385,12 @@ tbody tr td{
     font-size: 14px;
     color: #554cd1;
     font-weight: 600;
+}
+.add_Employee_Container
+{
+    display: flex;
+    justify-content: center;
+    text-align: center;
 }
 @media (max-width: 769px) {
     /*#menu{*/

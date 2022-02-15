@@ -5,6 +5,7 @@ const defaultState={
         loading:false,
         error:null,
         user:null,
+        image:null,
         redirect:null,
         // login:false
     }
@@ -33,6 +34,7 @@ const auth_reducer = (state=defaultState, action) => {
                     loading: action.payload.loading,
                     // login: action.payload.login,
                     userid:action.payload.uid,
+                    image:action.payload.image,
                     redirect: "/",
                 }
             }
@@ -59,6 +61,7 @@ const auth_reducer = (state=defaultState, action) => {
                 payload: {
                     ...state.payload,
                     userid:action.payload.userid,
+                    image:action.payload.image,
                     redirect: "/Layout",
                 }
             }

@@ -1,18 +1,22 @@
 import axios from "axios";
+import {storage} from "../../Admin_Site/Component/Authentication/Firebase";
+import {ref,uploadBytes,getDownloadURL} from "@firebase/storage";
 const Signup_Started=()=>{
     return{
         type:"Signup_Started",
         payload:{loading:true}
     }
 }
-const Signup_Success=(email,password)=>{
+const Signup_Success=(email,password,image)=>{
     return{
         type:"Signup_Success",
         payload:{
             loading:false,
-                email,password,
+                email,password,image
         }
+
     }
+
 }
 const Signup_Failure=(error)=>{
     return{
@@ -21,7 +25,7 @@ const Signup_Failure=(error)=>{
     }
 }
 
-const Signup_Intialize=(email,password,isAdmin)=>{
+const Signup_Intialize=(email,password,isAdmin,image)=>{
     const data={
         email:email,
         password:password,
@@ -50,8 +54,24 @@ const Signup_Intialize=(email,password,isAdmin)=>{
                         await axios.post(`https://employeesystem-5ca76-default-rtdb.firebaseio.com/admin.json`,uid);
                        // const response=await axios.get(`https://employeesystem-5ca76-default-rtdb.firebaseio.com/admin.json`);
                        //  console.log("data",response);
+
+                      //image upload to storage code.
+                        const imageref=ref(storage,`/admin_images/${user.data.localId+" "+image.name}`);
+                        uploadBytes(imageref,image).then(()=>{
+                            getDownloadURL(imageref).then((url)=>{
+                                // setUrl(url);
+
+                                // localStorage.setItem("image",url);
+                                console.log("image url:",url);
+                            }).catch(error=>{
+                                console.log(error.message,"error getting the image url");
+                            });
+                            // setimage(null);
+                        }).catch(error=>{
+                            console.log(error.message);
+                        });
                     }
-                 dispatch(Signup_Success(email,password));
+                 dispatch(Signup_Success(email,password,image));
 
         }
         catch(e)

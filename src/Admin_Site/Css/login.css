@@ -90,7 +90,7 @@ p {
 
 .form {
     position: absolute;
-    top: 0;
+    top: -30px;
     left: 0;
     right: 0;
     width: 100%;
@@ -147,7 +147,7 @@ footer {
 }
 .button:hover
 {
-    background-color: #2a2a72;
+    background-color: #3c3c97;
     /*background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%);*/
 }
 

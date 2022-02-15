@@ -9,6 +9,8 @@ import {Routes, Route} from "react-router";
 import {useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
 import Home from "./Employee_Site/Component/Home";
+import Add_Employee from "./Admin_Site/Component/Employee/Add_Employee";
+import Image_Upload from "./Admin_Site/Component/Authentication/Image_Upload";
 
 const App = () => {
     const [isAdminlogin, setIsAdminLogin] = useState(null);
@@ -45,7 +47,8 @@ const App = () => {
                     isAdminlogin ?
                         <Routes>
                             <Route path="/Layout" element={<Layout/>}></Route>
-                            <Route path="*" element={<Layout/>}></Route>
+                            <Route path="/Add_Employee" element={<Add_Employee/>}></Route>
+                            {/*<Route path="*" element={<Layout/>}></Route>*/}
                         </Routes>
                          :
 
@@ -58,6 +61,7 @@ const App = () => {
                             <Route path="/" element={<Login/>}></Route>
                             <Route path="/Signup" element={<Signup/>}></Route>
                             <Route path="/Forgot_Password" element={<Forgot_Password/>}></Route>
+                            <Route path="/Image" element={<Image_Upload/>}></Route>
                             <Route path="*" element={<Error/>}></Route>
                         </Routes>
 

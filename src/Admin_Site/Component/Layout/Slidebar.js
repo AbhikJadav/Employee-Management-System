@@ -1,6 +1,12 @@
-import React from 'react';
-import logo from "../../images/logo.jpg"
+import React, {useState} from 'react';
+import logo from "../../images/logo.jpg";
+import {Link} from "react-router-dom";
+
 const Slidebar = (props) => {
+    const [dropDown,setDropDown]=useState(true);
+    const showDropDown=()=>{
+        setDropDown(!dropDown);
+    }
     return (
         <>
 
@@ -12,6 +18,18 @@ const Slidebar = (props) => {
                 <div className="items">
                     <li><i className="fas fa-user"></i><a href="#">Profile</a></li>
                     <li><i className="fas fa-chart-pie-alt"></i><a href="#">Dashboard</a></li>
+                    <li><i className="fas fa-users"></i><a href="#">Employees
+                        <span className="fas fa-caret-down" id="dropDown" onClick={showDropDown}></span>
+
+                    </a>
+                        {dropDown?"":<>
+                            <Link to="/Add_Employee"><li><i className="fa fa-plus-circle"></i>Add Employee</li></Link>
+                            <li><i className="fa fa-eye"></i>Show Employee</li>
+                        </>
+                            }
+                        
+
+                    </li>
                     <li><i className="fas fa-table"></i><a href="#">Table</a></li>
                     <li><i className="fas fa-edit"></i><a href="#">Form</a></li>
                     <li><i className="fas fa-cog"></i><a href="#">Settings</a></li>
