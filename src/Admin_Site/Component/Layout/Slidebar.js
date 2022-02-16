@@ -17,15 +17,17 @@ const Slidebar = (props) => {
                 </div>
                 <div className="items">
                     <li><i className="fas fa-user"></i><a href="#">Profile</a></li>
-                    <li><i className="fas fa-chart-pie-alt"></i><a href="#">Dashboard</a></li>
+                    <li><Link to="/Dashboard"> <i className="fas fa-chart-pie-alt"></i>Dashboard</Link></li>
                     <li><i className="fas fa-users"></i><a href="#">Employees
                         <span className="fas fa-caret-down" id="dropDown" onClick={showDropDown}></span>
 
                     </a>
                         {dropDown?"":<>
+                            <ul>
                             <Link to="/Add_Employee"><li><i className="fa fa-plus-circle"></i>Add Employee</li></Link>
-                            <li><i className="fa fa-eye"></i>Show Employee</li>
-                        </>
+                            <Link to="/Show_Employee"><li><i className="fa fa-eye"></i>Show Employee</li></Link>
+                            </ul>
+                            </>
                             }
                         
 

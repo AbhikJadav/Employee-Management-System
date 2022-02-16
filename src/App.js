@@ -11,6 +11,8 @@ import {useSelector} from "react-redux";
 import Home from "./Employee_Site/Component/Home";
 import Add_Employee from "./Admin_Site/Component/Employee/Add_Employee";
 import Image_Upload from "./Admin_Site/Component/Authentication/Image_Upload";
+import Dashboard from "./Admin_Site/Component/Dashboard";
+import Show_Employee from "./Admin_Site/Component/Employee/Show_Employee";
 
 const App = () => {
     const [isAdminlogin, setIsAdminLogin] = useState(null);
@@ -47,7 +49,10 @@ const App = () => {
                     isAdminlogin ?
                         <Routes>
                             <Route path="/Layout" element={<Layout/>}></Route>
+                            <Route path="/Dashboard" element={<Dashboard/>}></Route>
                             <Route path="/Add_Employee" element={<Add_Employee/>}></Route>
+                            <Route path="/Show_Employee" element={<Show_Employee/>}></Route>
+
                             {/*<Route path="*" element={<Layout/>}></Route>*/}
                         </Routes>
                          :

@@ -43,6 +43,7 @@ const Signup = () => {
             email: "",
             password: ""
         });
+        setIsAdmin(null);
 
     }
     const Login_Link=()=>{
