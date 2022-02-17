@@ -83,7 +83,7 @@ const Signup = () => {
 
                     <footer>
                         <span id="err" style={{color:"red",fontWeight:"bold"}}>{selector.payload.error}</span>
-                        {/*<span onClick={Image} style={{color:"navy",fontWeight:"bold"}}>Image</span>*/}
+                        <span onClick={Image} style={{color:"navy",fontWeight:"bold"}}>Image</span>
                         <input type="checkbox" name="admin" onChange={(event)=>setIsAdmin(event.target.checked)} checked={isAdmin} /><span style={{color:"navy",fontWeight:"bold"}}>Admin</span>
                         <button onClick={signIn} className="button">Signup Here</button>
                         {/*<p>Go To! <Link to="/" className="Link">Login</Link></p>*/}

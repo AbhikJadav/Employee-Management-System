@@ -46,14 +46,14 @@ const Add_Employee = () => {
     return (
         <>
             <Layout/>
-            <h2 style={{marginTop:"130px",marginLeft:"300px"}} className="mb-3"></h2>
-
+            {/*<h2 style={{marginTop:"130px",marginLeft:"300px"}} className="mb-3"></h2>*/}
+            <div className="main_employee">
             <div className="add_Employee_Container" >
             <div className="col-md-7 col-lg-8">
-                <h3 className="mb-3">Add Employee</h3>
+                <h3>Add Employee</h3>
 
-                    <div className="row g-3">
-                        <div className="col">
+                    <div className="row g-3 mt-2">
+                        <div className="col-12">
                             <label htmlFor="name" className="form-label">Name</label>
                             <input type="text" className="form-control" id="name" placeholder="Enter Employee Name"
                                    name="username" onChange={handleChangeEvent} value={employeeFormData.username} required=""/>
@@ -73,9 +73,10 @@ const Add_Employee = () => {
                         </div>
                         <div className="col-12">
                             <label htmlFor="inputDob" className="col-sm-2 col-form-label">Date of Birth</label>
-
+                                <div className="col-5">
                                 <input type="date" className="form-control" id="dob" name="dob" placeholder=""
                                        onChange={handleChangeEvent} value={employeeFormData.dob} required/>
+                                </div>
                         </div>
 
                         <div className="my-3">
@@ -106,10 +107,13 @@ const Add_Employee = () => {
                     </div>
 
                 <hr className="my-4"/>
-
+                    <div className="col-12 d-flex justify-content-center">
+                    <div className="col-12">
                     <button className="w-100 btn btn-primary btn-lg" onClick={add_Employee}>Add Employee
                     </button>
-             
+                    </div>
+                    </div>
+            </div>
             </div>
             </div>
         </>
