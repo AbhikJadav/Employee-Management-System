@@ -2,7 +2,9 @@ import React, {useEffect} from 'react';
 import Layout from "../Layout/Layout";
 import {useDispatch, useSelector} from "react-redux";
 import Show_Employee_Intialize from "../../../redux/Action/show_Employee_Action";
-import {logger} from "redux-logger/src";
+import show_Employee_Data from "../Employee/show_Employee_Data";
+import Show_Employee_Data from "../Employee/show_Employee_Data";
+import Delete_Employee_Intialize from "../../../redux/Action/delete_Employee_Action";
 const Show_Employee = () => {
     const disptach=useDispatch();
     const selector=useSelector((state=>state.employee_reducer));
@@ -15,6 +17,10 @@ const Show_Employee = () => {
 
     //    console.log("selector:",selector.payload.table);
     },[disptach])
+    const Delete_Event=(id)=>{
+        console.log("id",id);
+        disptach(Delete_Employee_Intialize(id));
+    }
     return (
         <>
 
@@ -22,11 +28,15 @@ const Show_Employee = () => {
             <div className="main_employee">
                 <div className="add_Employee_Container" >
                     <div className="col-md-7 col-lg-8">
-                        <h3>Show Employee</h3>
-
+                        <div className="header_add_Employee">
+                            <div className="title"><h3>Show Employee</h3></div>
+                            <div className="show_Add_btn btn btn-dark">Add Employee</div>
+                        </div>
+                        <div className="table_data">
                         <table className="table mt-5">
                             <thead>
                             <tr>
+                                <th>#</th>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Dob</th>
@@ -38,18 +48,26 @@ const Show_Employee = () => {
                             </thead>
                             <tbody>
                             {
-                                selector.payload.table.map((element)=>{
-                                    return(
-                                        <tr>
-                                            <td>{element.data.empdata.username}</td>
-                                            <td>{element.data.empdata.email}</td>
-                                            <td>{element.data.empdata.dob}</td>
-                                            <td>{element.data.empdata.gender}</td>
-                                            <td>{element.data.empdata.address}</td>
-                                            <td>{element.data.empdata.image}</td>
 
-                                            <td><a href="#">Edit</a></td><td><a href="#">Delete</a></td>
-                                        </tr>
+
+                                selector.payload.table.map((element,index)=>{
+                                    return(
+
+                                            <Show_Employee_Data key={index}
+                                                                id={index+1}
+                                                                emp_id={element.id}
+                                                                username={element.data.empdata.username}
+                                                                email={element.data.empdata.email}
+                                                                dob={element.data.empdata.dob}
+                                                                gender={element.data.empdata.gender}
+                                                                address={element.data.empdata.address}
+                                                                image={element.data.empdata.image}
+                                                                onSubmit_Del={Delete_Event}
+                                            />
+
+
+
+
 
                                     )
                                     console.log("address:",element.data.empdata.dob);
@@ -58,7 +76,7 @@ const Show_Employee = () => {
 
                             </tbody>
                         </table>
-
+                        </div>
                      </div>
                 </div>
             </div>

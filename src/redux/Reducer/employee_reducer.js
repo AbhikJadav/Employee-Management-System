@@ -8,6 +8,7 @@ const defaultState={
         redirect:null,
         empData:null,
         table: [],
+
         // login:false
     }
 }
@@ -17,6 +18,7 @@ const employee_reducer = (state=defaultState, action) => {
     {
         case "Add_Employee_Started":
         case "Show_Employee_Started":
+        case "Delete_Employee_Started":
             return{
                 ...state,
                 payload: {
@@ -33,6 +35,7 @@ const employee_reducer = (state=defaultState, action) => {
                     userid:action.payload.uid,
                     // redirect: "/",
                     empData: action.payload.username,
+
                 }
             }
         case "Show_Employee_Success":
@@ -44,9 +47,19 @@ const employee_reducer = (state=defaultState, action) => {
                     table:action.payload.data,
                 }
             }
+        case "Delete_Employee_Success":
+            return{
+                ...state,
+                payload: {
+                    ...state.payload,
+                    loading: action.payload.loading,
+                    id:action.payload.emp_id,
+                }
+            }
 
        case "Add_Employee_Failure":
        case "Show_Employee_Failure":
+       case "Delete_Employee_Failure":
 
             return{
                 ...state,

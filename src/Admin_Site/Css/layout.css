@@ -440,6 +440,18 @@ tbody tr td{
     background: #F4F5F7;
     height: 100%;
 }
+.header_add_Employee
+{
+    display: flex;
+    justify-content: space-between;
+    /*border: 2px solid black;*/
+    width:100%;
+}
+.table_data
+{
+    /*border: 1px solid;*/
+    /*width: 1000px;*/
+}
 @media (max-width: 769px) {
     img
     {
@@ -514,7 +526,6 @@ tbody tr td{
         flex-wrap: wrap;
 
     }
-
 
 }
 @media (max-width: 477px) {

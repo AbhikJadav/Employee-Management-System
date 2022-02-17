@@ -1,7 +1,7 @@
 import axios from "axios";
-import {getDownloadURL, ref, uploadBytes} from "@firebase/storage";
+import {getDownloadURL, ref, uploadBytes, uploadBytesResumable} from "@firebase/storage";
 import {storage} from "../../Admin_Site/Component/Authentication/Firebase";
-
+import Show_Employee_Intialize from "../Action/show_Employee_Action"
 const Add_Employee_Started=()=>{
     return{
         type:"Add_Employee_Started",
@@ -41,6 +41,7 @@ const Add_Employee_Intialize=(email,password,empData,image,isAdmin)=>{
             var userdata={
                 id:user.data.localId,
                 empdata:empData,
+                image:image.name
             }
             // let uid={id:user.data.localId};
             if (isAdmin===false)
@@ -53,8 +54,9 @@ const Add_Employee_Intialize=(email,password,empData,image,isAdmin)=>{
                 uploadBytes(imageref,image).then(()=>{
                     getDownloadURL(imageref).then((url)=>{
                         // setUrl(url);
-
+                        // let imageurl=url;
                         // localStorage.setItem("image",url);
+
                         console.log("image url:",url);
                     }).catch(error=>{
                         console.log(error.message,"error getting the image url");
@@ -64,9 +66,30 @@ const Add_Employee_Intialize=(email,password,empData,image,isAdmin)=>{
                     console.log(error.message);
                 });
 
+                // const uploadImage=uploadBytesResumable(imageref,image);
+                // uploadImage.on("state_changed",
+                //     (snapshot)=>{
+                //         const progressPercent=Math.round ((snapshot.bytesTransferred/snapshot.totalBytes)*100);
+                //         setProgress(progressPercent);
+                //     },(error)=>{
+                //         console.log(error);
+                //     },()=>{
+                //         getDownloadURL(uploadImage.snapshot.ref)
+                //             .then((url)=>{
+                //                 setUrl(url);
+                //             })
+                //             .then(()=>{
+                //                 setProgress(0);
+                //             }).catch((err)=>{
+                //             console.log(err);
+                //         })
+                //     }
+                // )
+
+
             }
             dispatch(Add_Employee_Success(email,password,empData,image));
-
+            dispatch(Show_Employee_Intialize());
         }
         catch(e)
         {

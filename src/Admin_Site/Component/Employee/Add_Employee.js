@@ -25,6 +25,7 @@ const Add_Employee = () => {
     }
     const [isAdmin,setIsAdmin]=useState(false);
     const [image,setImage]=useState(null);
+    const [url,setUrl]=useState(null);
     const dispatch=useDispatch();
     const selector=useSelector((state => state.employee_reducer));
     const navigate=useNavigate();
@@ -40,7 +41,9 @@ const Add_Employee = () => {
             gender:"",
             dob:"",
             address: "",
+
         });
+
 
     }
     return (
