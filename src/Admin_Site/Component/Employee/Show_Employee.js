@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import Layout from "../Layout/Layout";
 import {useDispatch, useSelector} from "react-redux";
 import Show_Employee_Intialize from "../../../redux/Action/show_Employee_Action";
@@ -8,7 +8,6 @@ import Delete_Employee_Intialize from "../../../redux/Action/delete_Employee_Act
 const Show_Employee = () => {
     const disptach=useDispatch();
     const selector=useSelector((state=>state.employee_reducer));
-
     // useEffect(()=>{
     //     console.log("sel:",selector.payload.data);
     // },[selector.payload.data])
@@ -17,10 +16,17 @@ const Show_Employee = () => {
 
     //    console.log("selector:",selector.payload.table);
     },[disptach])
-    const Delete_Event=(id)=>{
-        console.log("id",id);
-        disptach(Delete_Employee_Intialize(id));
+    const Delete_Event=(id,email,password)=>{
+        // console.log("id",id);
+        // console.log("emai:",email);
+        // console.log("password",password);
+        disptach(Delete_Employee_Intialize(id,email,password));
     }
+    // {
+    //     selector.payload.table.map((element,index)=> {
+    //         console.log("image:",element.data.image)
+    //     })
+    // }
     return (
         <>
 
@@ -56,12 +62,14 @@ const Show_Employee = () => {
                                             <Show_Employee_Data key={index}
                                                                 id={index+1}
                                                                 emp_id={element.id}
+
                                                                 username={element.data.empdata.username}
                                                                 email={element.data.empdata.email}
+                                                                password={element.data.empdata.password}
                                                                 dob={element.data.empdata.dob}
                                                                 gender={element.data.empdata.gender}
                                                                 address={element.data.empdata.address}
-                                                                image={element.data.empdata.image}
+                                                                image={element.data.image}
                                                                 onSubmit_Del={Delete_Event}
                                             />
 
@@ -70,7 +78,7 @@ const Show_Employee = () => {
 
 
                                     )
-                                    console.log("address:",element.data.empdata.dob);
+                                    // console.log("address:",element.data.empdata.dob);
                                 })
                             }
 

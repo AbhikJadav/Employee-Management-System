@@ -26,7 +26,7 @@ const Show_Employee_Failure=(error)=>{
     }
 }
 
-const Show_Employee_Intialize=(isAdmin)=>{
+const Show_Employee_Intialize=()=>{
     // const data={
     //     email:email,
     //     password:password,
@@ -58,10 +58,13 @@ const Show_Employee_Intialize=(isAdmin)=>{
                     data:response.data[key],
                 })
             }
+
+
+
             dispatch(Show_Employee_Success(table));
             // table.map((element)=>{
             //     return(
-            //         console.log("name:",element.data.empdata.address)
+            //         console.log("name:",element.empdata.id)
             //     )
             // })
         }

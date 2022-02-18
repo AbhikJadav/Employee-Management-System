@@ -13,7 +13,7 @@ const Show_Employee_Data = (props) => {
                 <td>{props.image}</td>
 
                 <td><button className="btn btn-outline-dark">Edit</button></td><td>
-                    <button className="btn btn-outline-danger" onClick={()=>props.onSubmit_Del(props.emp_id)} >Delete</button></td>
+                    <button className="btn btn-outline-danger" onClick={()=>props.onSubmit_Del(props.emp_id,props.email,props.password)} >Delete</button></td>
             </tr>
 
         </>

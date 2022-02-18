@@ -1,12 +1,27 @@
 import React, {useState} from 'react';
 import logo from "../../images/logo.jpg";
 import {Link} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import {Redirect} from "../../../redux/Action/login_action";
+
 
 const Slidebar = (props) => {
     const [dropDown,setDropDown]=useState(true);
     const showDropDown=()=>{
         setDropDown(!dropDown);
     }
+const dispatch=useDispatch();
+
+const Dashboard=()=>{
+        dispatch(Redirect('/Dashboard'));
+}
+const Add_Employee=()=>{
+        dispatch(Redirect('/Add_Employee'));
+}
+const Show_Employee=()=>{
+        dispatch(Redirect('/Show_Employee'));
+}
+
     return (
         <>
 
@@ -17,15 +32,15 @@ const Slidebar = (props) => {
                 </div>
                 <div className="items">
                     <li><i className="fas fa-user"></i><a href="#">Profile</a></li>
-                    <li><Link to="/Dashboard"> <i className="fas fa-chart-pie-alt"></i>Dashboard</Link></li>
+                    <li onClick={Dashboard}><a><i className="fas fa-chart-pie-alt"></i>Dashboard</a></li>
                     <li><i className="fas fa-users"></i><a href="#">Employees
                         <span className="fas fa-caret-down" id="dropDown" onClick={showDropDown}></span>
 
                     </a>
                         {dropDown?"":<>
                             <ul>
-                            <Link to="/Add_Employee"><li><i className="fa fa-plus-circle"></i>Add Employee</li></Link>
-                            <Link to="/Show_Employee"><li><i className="fa fa-eye"></i>Show Employee</li></Link>
+                            <li onClick={Add_Employee}><i className="fa fa-plus-circle"></i>Add Employee</li>
+                            <li onClick={Show_Employee}><i className="fa fa-eye"></i>Show Employee</li>
                             </ul>
                             </>
                             }

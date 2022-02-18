@@ -373,7 +373,10 @@ img {
 }
 table{
     border-collapse: collapse;
+    /*background: #a194d0;*/
+
 }
+
 tr
 {
     border-bottom:1px solid #eef0f3  ;
@@ -447,10 +450,11 @@ tbody tr td{
     /*border: 2px solid black;*/
     width:100%;
 }
+
 .table_data
 {
     /*border: 1px solid;*/
-    /*width: 1000px;*/
+    /*width: 1440px;*/
 }
 @media (max-width: 769px) {
     img

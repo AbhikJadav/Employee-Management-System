@@ -62,6 +62,7 @@ const Add_Employee_Intialize=(email,password,empData,image,isAdmin)=>{
                         console.log(error.message,"error getting the image url");
                     });
                     // setimage(null);
+                    console.log("uploaded");
                 }).catch(error=>{
                     console.log(error.message);
                 });
@@ -89,7 +90,7 @@ const Add_Employee_Intialize=(email,password,empData,image,isAdmin)=>{
 
             }
             dispatch(Add_Employee_Success(email,password,empData,image));
-            dispatch(Show_Employee_Intialize());
+            // dispatch(Show_Employee_Intialize());
         }
         catch(e)
         {

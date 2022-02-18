@@ -3,12 +3,14 @@ import Layout from "../Layout/Layout";
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router";
 import Add_Employee_Intialize from "../../../redux/Action/Add_Employee_Action";
+import {getDownloadURL, ref, uploadBytes} from "@firebase/storage";
+import {storage} from "../Authentication/Firebase";
 const Add_Employee = () => {
     const [employeeFormData,setEmployeeFormData]=useState({
         email:"",
         password:"",
         username:"",
-        gender:"Male",
+        gender:"",
         dob:"",
         address:"",
 
@@ -29,6 +31,7 @@ const Add_Employee = () => {
     const dispatch=useDispatch();
     const selector=useSelector((state => state.employee_reducer));
     const navigate=useNavigate();
+    let imageurl=[];
 
 
     const add_Employee=()=>{
@@ -43,8 +46,6 @@ const Add_Employee = () => {
             address: "",
 
         });
-
-
     }
     return (
         <>
@@ -105,7 +106,12 @@ const Add_Employee = () => {
                                 if(event.target.files[0]){
                                     setImage(event.target.files[0]);
                                 }
-                            }} name="image"/>
+                            }} name="image" />
+                        </div>
+                        <div className="col-sm-6">
+                            <label htmlFor="image" className="form-label">Image</label>
+
+                            <img src={url} height="100px" width="300px"/>
                         </div>
                     </div>
 
