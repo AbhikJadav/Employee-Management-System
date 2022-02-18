@@ -5,6 +5,8 @@ import Show_Employee_Intialize from "../../../redux/Action/show_Employee_Action"
 import show_Employee_Data from "../Employee/show_Employee_Data";
 import Show_Employee_Data from "../Employee/show_Employee_Data";
 import Delete_Employee_Intialize from "../../../redux/Action/delete_Employee_Action";
+import {Redirect} from "../../../redux/Action/login_action";
+import Update_Employee_Intialize from "../../../redux/Action/Update_Employee_Action";
 const Show_Employee = () => {
     const disptach=useDispatch();
     const selector=useSelector((state=>state.employee_reducer));
@@ -21,6 +23,13 @@ const Show_Employee = () => {
         // console.log("emai:",email);
         // console.log("password",password);
         disptach(Delete_Employee_Intialize(id,email,password));
+    }
+    const Edit_Event=(id)=>{
+        console.log("id",id);
+
+        // console.log("emai:",email);
+        // console.log("password",password);
+        //  disptach(Update_Employee_Intialize(id));
     }
     // {
     //     selector.payload.table.map((element,index)=> {
@@ -71,6 +80,7 @@ const Show_Employee = () => {
                                                                 address={element.data.empdata.address}
                                                                 image={element.data.image}
                                                                 onSubmit_Del={Delete_Event}
+                                                                onSubmit_Edit={Edit_Event}
                                             />
 
 

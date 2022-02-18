@@ -1,19 +1,30 @@
 import React from 'react';
-
+import Edit_Employee from "./Edit_Employee";
 const Show_Employee_Data = (props) => {
+    // const [modalShow, setModalShow] = React.useState(false);
+    // const Edit_btn=()=>{
+    //     setModalShow(true);
+    //     props.onSubmit_Edit(props.emp_id);
+    // }
+    const {id,emp_id,username,email,password,gender,dob,address,image,onSubmit_Del,onSubmit_Edit}=props;
     return (
         <>
-            <tr>
-                <td>{props.id}</td>
-                <td>{props.username}</td>
-                <td>{props.email}</td>
-                <td>{props.dob}</td>
-                <td>{props.gender}</td>
-                <td>{props.address}</td>
-                <td>{props.image}</td>
 
-                <td><button className="btn btn-outline-dark">Edit</button></td><td>
-                    <button className="btn btn-outline-danger" onClick={()=>props.onSubmit_Del(props.emp_id,props.email,props.password)} >Delete</button></td>
+            <tr>
+                <td>{id}</td>
+                <td>{username}</td>
+                <td>{email}</td>
+                <td>{dob}</td>
+                <td>{gender}</td>
+                <td>{address}</td>
+                <td>{image}</td>
+
+                <Edit_Employee onSubmit={onSubmit_Edit} employee_id={emp_id}/>
+                    {/*<button className="btn btn-outline-dark" onClick={()=>props.onSubmit_Edit(props.emp_id)}>Edit</button></td><td>*/}
+
+                    <td><button className="btn btn-outline-danger" onClick={()=>onSubmit_Del(emp_id,email,password)} >Delete</button></td>
+
+
             </tr>
 
         </>

@@ -50,7 +50,8 @@ const App = () => {
                         <Routes>
                             <Route path="/Layout" element={<Layout/>}></Route>
                             <Route path="/Dashboard" element={<Dashboard/>}></Route>
-                            <Route path="/Add_Employee" element={<Add_Employee/>}></Route>
+                            <Route path="/Add_Employee" element={<Add_Employee/>}></Route>  {/*this is for add employee profile.*/}
+
                             <Route path="/Show_Employee" element={<Show_Employee/>}></Route>
 
                             <Route path="*" element={<Layout/>}></Route>

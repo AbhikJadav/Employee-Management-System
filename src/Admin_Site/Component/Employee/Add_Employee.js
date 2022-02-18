@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Layout from "../Layout/Layout";
 import {useDispatch, useSelector} from "react-redux";
-import {useNavigate} from "react-router";
+import {useNavigate, useParams} from "react-router";
 import Add_Employee_Intialize from "../../../redux/Action/Add_Employee_Action";
 import {getDownloadURL, ref, uploadBytes} from "@firebase/storage";
 import {storage} from "../Authentication/Firebase";
@@ -30,9 +30,19 @@ const Add_Employee = () => {
     const [url,setUrl]=useState(null);
     const dispatch=useDispatch();
     const selector=useSelector((state => state.employee_reducer));
-    const navigate=useNavigate();
-    let imageurl=[];
 
+    // const params=(useParams().postId);
+    // console.log("params",params);
+    // selector.payload.table.map((element,index)=>{
+    //     console.log("emp_data:",element.data.empdata);
+    // })
+    // console.log("selector:",selector.payload.table);
+    // const emp_id=selector.payload.table.findIndex((element,index)=>element.id===params);
+    // console.log("email:",selector.payload.table[emp_id].data.empdata.email);
+    // console.log("username:",selector.payload.table[emp_id].data.empdata.username);
+    // console.log("gender:",selector.payload.table[emp_id].data.empdata.gender);
+    // console.log("dob:",selector.payload.table[emp_id].data.empdata.dob);
+    // console.log("address:",selector.payload.table[emp_id].data.empdata.address);
 
     const add_Employee=()=>{
 

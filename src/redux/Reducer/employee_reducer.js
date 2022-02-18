@@ -19,6 +19,7 @@ const employee_reducer = (state=defaultState, action) => {
         case "Add_Employee_Started":
         case "Show_Employee_Started":
         case "Delete_Employee_Started":
+        case "Update_Employee_Started":
             return{
                 ...state,
                 payload: {
@@ -56,10 +57,20 @@ const employee_reducer = (state=defaultState, action) => {
                     id:action.payload.emp_id,
                 }
             }
+        case "Update_Employee_Success":
+            return{
+                ...state,
+                payload: {
+                    ...state.payload,
+                    loading: action.payload.loading,
+                    id:action.payload.employee_id,
+                }
+            }
 
        case "Add_Employee_Failure":
        case "Show_Employee_Failure":
        case "Delete_Employee_Failure":
+       case "Update_Employee_Failure":
 
             return{
                 ...state,

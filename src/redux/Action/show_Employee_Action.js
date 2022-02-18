@@ -70,7 +70,7 @@ const Show_Employee_Intialize=()=>{
         }
         catch(e)
         {
-            dispatch(Show_Employee_Failure(e.response.data.error.message));
+            dispatch(Show_Employee_Failure(e.message));
         }
 
     }
