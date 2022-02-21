@@ -2,6 +2,7 @@ import axios from "axios";
 import {getDownloadURL, ref, uploadBytes, uploadBytesResumable} from "@firebase/storage";
 import {storage} from "../../Admin_Site/Component/Authentication/Firebase";
 import Show_Employee_Intialize from "../Action/show_Employee_Action"
+import {Image_Progress, Image_UrlData} from "./Image_Upload_Action";
 const Add_Employee_Started=()=>{
     return{
         type:"Add_Employee_Started",
@@ -73,22 +74,26 @@ const Add_Employee_Intialize=(email,password,empData,image,isAdmin)=>{
                     (snapshot)=>{
                         const progressPercent=Math.round ((snapshot.bytesTransferred/snapshot.totalBytes)*100);
                         // setProgress(progressPercent);
+                        dispatch(Image_Progress(progressPercent));
                         console.log("progresspercent:",progressPercent);
                     },(error)=>{
                         console.log(error);
-                    },()=>{
-                        getDownloadURL(uploadImage.snapshot.ref)
-                            .then((url)=>{
-                                // setUrl(url);
-                                console.log("url:",url)
-                            })
-                            .then(()=>{
-                                // setProgress(0);
-                                console.log("progress:",0);
-                            }).catch((err)=>{
-                            console.log(err);
-                        })
                     }
+                    // ,()=>{
+                    //     getDownloadURL(uploadImage.snapshot.ref)
+                    //         .then((url)=>{
+                    //             // setUrl(url);
+                    //             dispatch(Image_UrlData(url));
+                    //             console.log("url:",url)
+                    //         })
+                    //         .then(()=>{
+                    //             // setProgress(0);
+                    //             // dispatch(Image_Progress(0));
+                    //             console.log("progress:",0);
+                    //         }).catch((err)=>{
+                    //         console.log(err);
+                    //     })
+                    // }
                 )
 
 

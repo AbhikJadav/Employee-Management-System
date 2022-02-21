@@ -18,6 +18,7 @@ const Show_Employee = () => {
 
     //    console.log("selector:",selector.payload.table);
     },[disptach])
+
     const Delete_Event=(id,email,password,image)=>{
         // console.log("id",id);
         // console.log("emai:",email);

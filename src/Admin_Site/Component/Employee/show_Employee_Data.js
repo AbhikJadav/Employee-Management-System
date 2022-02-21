@@ -61,7 +61,7 @@ const Show_Employee_Data = (props) => {
                     {image}
                 </button></td>
                 {/*<td><button className="btn btn-outline-primary">{image}</button></td>*/}
-                <Edit_Employee onSubmit={onSubmit_Edit} employee_id={emp_id}/>
+                <Edit_Employee onSubmit={onSubmit_Edit} employee_id={emp_id} emp_email={email} emp_password={password}/>
                     {/*<button className="btn btn-outline-dark" onClick={()=>props.onSubmit_Edit(props.emp_id)}>Edit</button></td><td>*/}
 
                     <td><button className="btn btn-outline-danger" onClick={()=>onSubmit_Del(emp_id,email,password,image)} >Delete</button></td>

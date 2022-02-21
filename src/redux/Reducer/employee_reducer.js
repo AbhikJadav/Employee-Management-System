@@ -9,7 +9,7 @@ const defaultState={
         // url:null,
         empData:null,
         table: [],
-
+        progress:0,
         // login:false
     }
 }
@@ -38,7 +38,7 @@ const employee_reducer = (state=defaultState, action) => {
                     userid:action.payload.uid,
                     // redirect: "/",
                     empData: action.payload.username,
-
+                    // redirect:"/Show_Employee",
                 }
             }
         case "Show_Employee_Success":
@@ -108,6 +108,17 @@ const employee_reducer = (state=defaultState, action) => {
                     ...state.payload,
                     loading:action.payload.loading,
                     url_Data:action.payload.url,
+
+                }
+            }
+        case "Image_Progress":
+            return {
+                ...state,
+                payload: {
+                    ...state.payload,
+                    loading:action.payload.loading,
+                    progress:action.payload.progress,
+
                 }
             }
 

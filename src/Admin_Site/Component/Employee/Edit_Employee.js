@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Modal from "react-bootstrap/Modal";
 import Update_Employee_Intialize from "../../../redux/Action/Update_Employee_Action";
 import {useDispatch, useSelector} from "react-redux";
+import Image_Upload_Intialize from "../../../redux/Action/Image_Upload_Action";
 
 const Edit_Employee = (props) => {
 
@@ -10,6 +11,17 @@ const Edit_Employee = (props) => {
     const [image,setImage]=useState(null);
     const selector=useSelector((state => state.employee_reducer));
     const dispatch=useDispatch();
+    const [imgUrlData,setImgUrlData]=useState(null);
+    useEffect(()=>{
+
+        console.log("my_url:",selector.payload.url_Data);
+        setImgUrlData(selector.payload.url_Data);
+    },[selector.payload.url_Data]);
+    // const img_btn=()=> {
+    //     setModalShow(true)
+    //     dispatch(Image_Upload_Intialize(email,password));
+    //
+    // }
     const [employeeFormData,setEmployeeFormData]=useState({
         username:"",
         gender:"",
@@ -62,7 +74,7 @@ const Edit_Employee = (props) => {
     const Update_Employee=()=>{
 
         setModalShow(false);
-       dispatch( Update_Employee_Intialize(props.employee_id,employeeFormData));
+       dispatch( Update_Employee_Intialize(props.employee_id,props.emp_email,props.emp_password,image,employeeFormData));
         // console.log(props.employee_id);
 
     }
@@ -127,6 +139,9 @@ const Edit_Employee = (props) => {
                             </div>
                             <div className="col-sm-6 mt-3">
                                 <label htmlFor="image" className="form-label">Image</label>
+                                <div className="img" style={{width:"300px"}}>
+                                <img src={imgUrlData}/>
+                                </div>
                                 <input type="file" className="form-control " id="image"
                                        required=""
                                        onChange={(event)=>{

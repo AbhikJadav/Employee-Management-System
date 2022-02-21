@@ -28,6 +28,12 @@ const Image_UrlData=(url)=>{
         payload:{loading:false,url}
     }
 }
+const Image_Progress=(progress)=>{
+    return{
+        type:"Image_Progress",
+        payload:{loading:false,progress}
+    }
+}
 const Image_Upload_Intialize=(email,password)=>{
     const data={
         email:email,
@@ -63,4 +69,4 @@ const Image_Upload_Intialize=(email,password)=>{
     }
 }
 export default Image_Upload_Intialize;
-export {Image_UrlData};
+export {Image_UrlData,Image_Progress};

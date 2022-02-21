@@ -7,6 +7,7 @@ import {getDownloadURL, ref, uploadBytes} from "@firebase/storage";
 import {storage} from "../Authentication/Firebase";
 import {Redirect} from "../../../redux/Action/login_action";
 import Show_Employee_Intialize from "../../../redux/Action/show_Employee_Action";
+import {Image_Progress} from "../../../redux/Action/Image_Upload_Action";
 // import Redirect from "../../../redux/Action/login_action";
 const Add_Employee = () => {
     const [employeeFormData,setEmployeeFormData]=useState({
@@ -33,19 +34,13 @@ const Add_Employee = () => {
 
     const dispatch=useDispatch();
     const selector=useSelector((state => state.employee_reducer));
+    const [progress,setProgress]=useState(0);
+    useEffect(()=>{
+        setProgress(selector.payload.progress);
+        console.log("progress:",selector.payload.progress);
+    },[selector.payload.progress])
 
-    // const params=(useParams().postId);
-    // console.log("params",params);
-    // selector.payload.table.map((element,index)=>{
-    //     console.log("emp_data:",element.data.empdata);
-    // })
-    // console.log("selector:",selector.payload.table);
-    // const emp_id=selector.payload.table.findIndex((element,index)=>element.id===params);
-    // console.log("email:",selector.payload.table[emp_id].data.empdata.email);
-    // console.log("username:",selector.payload.table[emp_id].data.empdata.username);
-    // console.log("gender:",selector.payload.table[emp_id].data.empdata.gender);
-    // console.log("dob:",selector.payload.table[emp_id].data.empdata.dob);
-    // console.log("address:",selector.payload.table[emp_id].data.empdata.address);
+    console.log("my_progress:",progress);
 
     const add_Employee=()=>{
 
@@ -59,9 +54,17 @@ const Add_Employee = () => {
             address: "",
 
         });
+
         // dispatch(Redirect("/Show_Employee"));
-        dispatch(Redirect("/Show_Employee"));
-        dispatch(Show_Employee_Intialize());
+        // if(progress===100) {
+            dispatch(Redirect("/Show_Employee"));
+            dispatch(Show_Employee_Intialize());
+        // }
+        setImage("");
+        // else
+        // {
+        //     dispatch(Re)
+        // }
     }
     return (
         <>
@@ -123,10 +126,15 @@ const Add_Employee = () => {
                                     setImage(event.target.files[0]);
                                 }
                             }} name="image" />
-                            <div className="progress-bar progress-bar-striped mt-2" style={{width:"100%"}}>
-                                {`uploading image`}
-                            </div>
+
                         </div>
+                        {progress===0?null:(
+                            <div className="progress" style={{height:"25px"}}>
+                                <div className="progress-bar progress-bar-striped mt-2" style={{width:`${progress}%`}}>
+                                    {`uploading image ${progress}%`}
+                                </div>
+                            </div>
+                        )}
                         {/*<div className="col-sm-6">*/}
                         {/*    <label htmlFor="image" className="form-label">Image</label>*/}
 
