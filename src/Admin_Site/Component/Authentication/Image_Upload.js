@@ -52,12 +52,12 @@ const Image_Upload = () => {
     }
     const deleteimg=async()=>{
         try {
-            const storageRef=ref(storage,url);
+            const storageRef=ref(storage,`/images/${image.name}`);
             await deleteObject(storageRef)
         }catch (e) {
             console.log(e);
         }
-
+        console.log("delete successfully");
     }
 
     return (

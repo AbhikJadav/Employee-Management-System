@@ -6,6 +6,7 @@ const defaultState={
         error:null,
         user:null,
         redirect:null,
+        // url:null,
         empData:null,
         table: [],
 
@@ -20,6 +21,7 @@ const employee_reducer = (state=defaultState, action) => {
         case "Show_Employee_Started":
         case "Delete_Employee_Started":
         case "Update_Employee_Started":
+        case "Image_Upload_Started":
             return{
                 ...state,
                 payload: {
@@ -67,11 +69,20 @@ const employee_reducer = (state=defaultState, action) => {
                     empData: action.payload.emp_data,
                 }
             }
-
+        case "Image_Upload_Success":
+            return{
+                ...state,
+                payload: {
+                    ...state.payload,
+                    loading: action.payload.loading,
+                    id:action.payload.data,
+                }
+            }
        case "Add_Employee_Failure":
        case "Show_Employee_Failure":
        case "Delete_Employee_Failure":
        case "Update_Employee_Failure":
+       case "Image_Upload_Failure":
 
             return{
                 ...state,
@@ -88,6 +99,15 @@ const employee_reducer = (state=defaultState, action) => {
                     ...state.payload,
                     loading:action.payload.loading,
                     redirect:action.payload.path,
+                }
+            }
+        case "Image_UrlData":
+            return {
+                ...state,
+                payload: {
+                    ...state.payload,
+                    loading:action.payload.loading,
+                    url_Data:action.payload.url,
                 }
             }
 

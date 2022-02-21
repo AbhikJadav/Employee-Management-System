@@ -18,11 +18,11 @@ const Show_Employee = () => {
 
     //    console.log("selector:",selector.payload.table);
     },[disptach])
-    const Delete_Event=(id,email,password)=>{
+    const Delete_Event=(id,email,password,image)=>{
         // console.log("id",id);
         // console.log("emai:",email);
         // console.log("password",password);
-        disptach(Delete_Employee_Intialize(id,email,password));
+        disptach(Delete_Employee_Intialize(id,email,password,image));
     }
     const Edit_Event=(id)=>{
         console.log("id",id);
@@ -44,11 +44,13 @@ const Show_Employee = () => {
 
             <Layout/>
             <div className="main_employee">
-                <div className="add_Employee_Container" >
+                <div className="show_Employee_Container" >
                     <div className="col-md-7 col-lg-8">
                         <div className="header_add_Employee">
-                            <div className="title"><h3>Show Employee</h3></div>
-                            <div><button className="show_Add_btn btn btn-dark" onClick={add_Employee}>Add Employee</button></div>
+                            <div className="title"><h3>Show Employee</h3>
+                            </div>
+                            <div><button className="show_Add_btn btn btn-dark" onClick={add_Employee}>
+                                Add Employee</button></div>
                         </div>
                         <div className="table_data">
 

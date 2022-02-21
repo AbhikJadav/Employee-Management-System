@@ -16,6 +16,7 @@ const Edit_Employee = (props) => {
         dob:"",
         address:"",
     })
+    // const [image,setImage]=useState(null);
     const handleChangeEvent=(event)=>{
 
         const {name,value}=event.target;

@@ -37,18 +37,7 @@ const Show_Employee_Intialize=()=>{
         dispatch(Show_Employee_Started())
         try
         {
-            // const user=await axios.post(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDlxv7xQim0OVrcuZ3t2OFEeUqcxXm_go0`,data);
-            // var userdata={
-            //     id:user.data.localId,
-            //     empdata:empData,
-            // }
-            //  let uid={id:user.data.localId};
-            // if (isAdmin===false)
-            // {
-            //     console.log("name:",userdata);
-            //     await axios.post(`https://employeesystem-5ca76-default-rtdb.firebaseio.com/employee.json`,userdata);
-            //
-            // }
+
             const response=await axios.get(`https://employeesystem-5ca76-default-rtdb.firebaseio.com/employee.json`);
             const table=[];
             for(let key in response.data)
@@ -58,6 +47,8 @@ const Show_Employee_Intialize=()=>{
                     data:response.data[key],
                 })
             }
+
+
 
 
 

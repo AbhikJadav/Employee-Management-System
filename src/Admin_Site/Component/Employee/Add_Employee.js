@@ -30,7 +30,7 @@ const Add_Employee = () => {
     }
     const [isAdmin,setIsAdmin]=useState(false);
     const [image,setImage]=useState(null);
-    const [url,setUrl]=useState(null);
+
     const dispatch=useDispatch();
     const selector=useSelector((state => state.employee_reducer));
 
@@ -123,12 +123,15 @@ const Add_Employee = () => {
                                     setImage(event.target.files[0]);
                                 }
                             }} name="image" />
+                            <div className="progress-bar progress-bar-striped mt-2" style={{width:"100%"}}>
+                                {`uploading image`}
+                            </div>
                         </div>
-                        <div className="col-sm-6">
-                            <label htmlFor="image" className="form-label">Image</label>
+                        {/*<div className="col-sm-6">*/}
+                        {/*    <label htmlFor="image" className="form-label">Image</label>*/}
 
-                            <img src={url} height="100px" width="300px"/>
-                        </div>
+                        {/*    <img src={url} height="100px" width="300px"/>*/}
+                        {/*</div>*/}
                     </div>
 
                 <hr className="my-4"/>
