@@ -14,6 +14,7 @@ const Show_Employee_Data = (props) => {
                 <td>{id}</td>
                 <td>{username}</td>
                 <td>{email}</td>
+                {/*<td>{password}</td>*/}
                 <td>{dob}</td>
                 <td>{gender}</td>
                 <td>{address}</td>

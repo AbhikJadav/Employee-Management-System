@@ -36,6 +36,9 @@ const Show_Employee = () => {
     //         console.log("image:",element.data.image)
     //     })
     // }
+    const add_Employee=()=>{
+        disptach(Redirect("/Add_Employee"));
+    }
     return (
         <>
 
@@ -45,12 +48,13 @@ const Show_Employee = () => {
                     <div className="col-md-7 col-lg-8">
                         <div className="header_add_Employee">
                             <div className="title"><h3>Show Employee</h3></div>
-                            <div className="show_Add_btn btn btn-dark">Add Employee</div>
+                            <div><button className="show_Add_btn btn btn-dark" onClick={add_Employee}>Add Employee</button></div>
                         </div>
                         <div className="table_data">
+
                         <table className="table mt-5">
                             <thead>
-                            <tr>
+                            {selector.payload.table.length?<tr>
                                 <th>#</th>
                                 <th>Name</th>
                                 <th>Email</th>
@@ -59,11 +63,10 @@ const Show_Employee = () => {
                                 <th>Address</th>
                                 <th>Image</th>
                                 <th>Action</th>
-                            </tr>
+                            </tr>:null}
                             </thead>
                             <tbody>
                             {
-
 
                                 selector.payload.table.map((element,index)=>{
                                     return(

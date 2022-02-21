@@ -54,7 +54,7 @@ const employee_reducer = (state=defaultState, action) => {
                 payload: {
                     ...state.payload,
                     loading: action.payload.loading,
-                    id:action.payload.emp_id,
+                    id:action.payload.data,
                 }
             }
         case "Update_Employee_Success":
@@ -64,6 +64,7 @@ const employee_reducer = (state=defaultState, action) => {
                     ...state.payload,
                     loading: action.payload.loading,
                     id:action.payload.employee_id,
+                    empData: action.payload.emp_data,
                 }
             }
 

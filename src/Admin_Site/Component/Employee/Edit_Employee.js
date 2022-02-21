@@ -11,13 +11,10 @@ const Edit_Employee = (props) => {
     const selector=useSelector((state => state.employee_reducer));
     const dispatch=useDispatch();
     const [employeeFormData,setEmployeeFormData]=useState({
-        email:"",
-        password:"",
         username:"",
         gender:"",
         dob:"",
         address:"",
-
     })
     const handleChangeEvent=(event)=>{
 
@@ -51,6 +48,7 @@ const Edit_Employee = (props) => {
         // console.log("emp_id:",props.emp_id);
         setEmployeeFormData({
             email:selector.payload.table[emp_id].data.empdata.email,
+            password:selector.payload.table[emp_id].data.empdata.password,
             username:selector.payload.table[emp_id].data.empdata.username,
             gender:selector.payload.table[emp_id].data.empdata.gender,
             dob:selector.payload.table[emp_id].data.empdata.dob,
@@ -92,11 +90,11 @@ const Edit_Employee = (props) => {
 
                             </div>
 
-                            <div className="col-12 mt-3">
-                                <label htmlFor="email" className="form-label">Email </label>
-                                <input type="email" className="form-control" id="email" name="email" placeholder="you@example.com" onChange={handleChangeEvent} value={employeeFormData.email} />
+                            {/*<div className="col-12 mt-3">*/}
+                            {/*    <label htmlFor="email" className="form-label">Email </label>*/}
+                            {/*    <input type="email" className="form-control" id="email" name="email" placeholder="you@example.com" onChange={handleChangeEvent} value={employeeFormData.email} />*/}
 
-                            </div>
+                            {/*</div>*/}
                             {/*<div className="col-12 mt-3">*/}
                             {/*    <label htmlFor="inputPassword" className="col-sm-2 col-form-label">Password</label>*/}
 

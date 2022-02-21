@@ -5,6 +5,9 @@ import {useNavigate, useParams} from "react-router";
 import Add_Employee_Intialize from "../../../redux/Action/Add_Employee_Action";
 import {getDownloadURL, ref, uploadBytes} from "@firebase/storage";
 import {storage} from "../Authentication/Firebase";
+import {Redirect} from "../../../redux/Action/login_action";
+import Show_Employee_Intialize from "../../../redux/Action/show_Employee_Action";
+// import Redirect from "../../../redux/Action/login_action";
 const Add_Employee = () => {
     const [employeeFormData,setEmployeeFormData]=useState({
         email:"",
@@ -56,6 +59,9 @@ const Add_Employee = () => {
             address: "",
 
         });
+        // dispatch(Redirect("/Show_Employee"));
+        dispatch(Redirect("/Show_Employee"));
+        dispatch(Show_Employee_Intialize());
     }
     return (
         <>

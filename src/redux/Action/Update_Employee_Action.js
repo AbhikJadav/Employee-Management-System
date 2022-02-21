@@ -6,12 +6,12 @@ const Update_Employee_Started=()=>{
         payload:{loading:true}
     }
 }
-const Update_Employee_Success=(employee_id)=>{
+const Update_Employee_Success=(employee_id,emp_data)=>{
     return{
         type:"Update_Employee_Success",
         payload:{
             loading:false,
-            employee_id,
+            employee_id,emp_data,
         }
 
     }
@@ -24,20 +24,14 @@ const Update_Employee_Failure=(error)=>{
     }
 }
 
-const Update_Employee_Intialize=(employee_id)=>{
-    // const data={
-    //     email:email,
-    //     password:password,
-    //     returnSecureToken:true
-    // }
-    return async function(dispatch){
+const Update_Employee_Intialize=(employee_id,emp_data)=>{
+     return async function(dispatch){
         dispatch(Update_Employee_Started())
         try
         {
-
             console.log("update_id:",employee_id);
 
-            // await axios.put(`https://employeesystem-5ca76-default-rtdb.firebaseio.com/${employee_id}.json`,data)
+            await axios.put(`https://employeesystem-5ca76-default-rtdb.firebaseio.com/employee/${employee_id}/empdata.json`,emp_data);
 
             // }
             // const user=await axios.post(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDlxv7xQim0OVrcuZ3t2OFEeUqcxXm_go0`);
@@ -50,7 +44,7 @@ const Update_Employee_Intialize=(employee_id)=>{
             //     //  console.log("data",response);
             //
             // }
-            dispatch(Update_Employee_Success(employee_id));
+            dispatch(Update_Employee_Success(employee_id,emp_data));
             dispatch(Show_Employee_Intialize());
         }
         catch(e)

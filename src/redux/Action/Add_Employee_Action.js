@@ -90,7 +90,7 @@ const Add_Employee_Intialize=(email,password,empData,image,isAdmin)=>{
 
             }
             dispatch(Add_Employee_Success(email,password,empData,image));
-            // dispatch(Show_Employee_Intialize());
+            dispatch(Show_Employee_Intialize());
         }
         catch(e)
         {
